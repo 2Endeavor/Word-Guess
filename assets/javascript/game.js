@@ -1,11 +1,28 @@
-// TODO: create
+// TODO: create a variable called guessesRemaining to track the number of guesses the user has
 
 // TODO: Need a conditional if statement that looks at the letter guessed and determines if it is part part of the word
 //    1. if letter was previously guessed then the user should be prompted to select something else
-//    2. Is the letter part of the word's array? if yes:
-//      a. placed the letter guessed in the lettersGuessed array
-//      b. display the letter guessed on the screen
+//    2. If the letter part of the word's array:
+//      a. display the letter guessed on the screen in the proper position
+//      b. run the victory function
+//       If thte letter is not part of the word's array:
+//      a.Place the letter in the letters guessed array
+//      b. guessesRemaining--
+//      c. run the victory function
+//     
+//      
 // TODO: filter out non-letters
+
+// TODO: create a victory function
+//       if the person has guessed all the letters they win
+//
+//       if they have exhausted all their chances they lose
+
+//       if they haven't guessed the word and have more chances remaining,
+// they continue to guess. 
+// TODO: need a play again button that clears resets the variables
+
+
 
 console.log("I see you :-)");
 //Number of wins will be incremented by one with each word guessed
