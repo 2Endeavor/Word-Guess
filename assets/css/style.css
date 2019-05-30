@@ -1,0 +1,35 @@
+
+.container {
+  width: 80vw;
+  background-color:lightgoldenrodyellow;
+  
+  
+}
+
+
+.header {
+  text-align: center;
+  height: 55px;
+  background-color: lavender;
+}
+.left-box{
+  background-color:blueviolet;
+  height: 40vh;
+  margin-top: 25px;
+}
+.right-box{
+  background-color: red;
+  height: 40vh;
+  margin-top:25px;
+}
+#directions{
+  padding-top:20px;
+  text-align:center;
+}
+.stat{
+  text-align: right;
+  background-color: red;
+}
+#user-text{
+  margin-left: 15px;
+}
