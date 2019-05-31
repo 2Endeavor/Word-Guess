@@ -1,4 +1,4 @@
-// TODO: create a variable called guessesRemaining to track the number of guesses the user has
+
 
 // TODO: Need a conditional if statement that looks at the letter guessed and determines if it is part part of the word
 //    1. if letter was previously guessed then the user should be prompted to select something else
@@ -25,8 +25,10 @@
 
 
 console.log("I see you :-)");
+// Create a variable called guessesRemaining to track the number of guesses the user has
+var guessesRemaining = 10;
 //Number of wins will be incremented by one with each word guessed
-var win = 20;
+var win = 0;
 
 // capitol is the array 50 capitols that are possible words
 var capitol =["Olympia", "Nashville","Sacramento"];
