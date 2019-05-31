@@ -43,9 +43,10 @@ var keyWord = capitol[Math.floor(Math.random() * capitol.length)];
 var NOB = keyWord.length;
 var lettersGuessed = [];
 // The following stores the letter guessed to the lettersGuessed array
-var userText = document.getElementById("user-text");
+var userText = document.getElementById('user-text');
 document.onkeyup = function(event){
   userText.textContent = event.key;
+  event.
   if(userText)
   lettersGuessed.push(event.key);
   console.log(event.key);
