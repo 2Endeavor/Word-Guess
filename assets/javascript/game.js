@@ -17,20 +17,60 @@
 
 
 
-//Create variables
+// GLOBAL VARIABLES
 var guessesRemaining = 10; // tracks the number of guesses remaining
 var win = 0; // tracks wins
 var wordList =["Olympia", "Nashville","Sacramento"]; //list of words computer selects from
 var alpha = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"] // letters allowed
 
-var keyWord = wordList[Math.floor(Math.random() * wordList.length)]; // This is the random word selected from the list of words
-var W = keyWord.split(""); // this converts the random word from a string into an array
-var NOB = keyWord.length;// This is the length of the random word
+var keyWord = "";
 
+var W = []; // array of letters for word to be guessed
+
+var NOB = 0;    // This is the length of the random word
+var blanksAndSuccesses =[]; // this will hold the blanks and correct guesses
 var lettersGuessed = [];
 // The following stores the letter selected to a temporary variable
 var userTextDiv = document.getElementById('user-text');
 
+//         FUNCTIONS
+
+
+// START GAME FUNCTION
+function startGame(){
+  guessesRemaining = 10;
+  keyWord = wordList[Math.floor(Math.random() * wordList.length)];
+  W = keyWord.split("");
+  NOB = keyWord.length;
+  lettersGuessed = [];
+  blanksAndSuccesses =[];
+  for (i=0; i<NOB; i++){
+    blanksAndSuccesses.push("_")  
+  }
+  document.getElementById("dashes").innerHTML=blanksAndSuccesses.join(" ");
+  document.getElementById("guesses").innerHTML=lettersGuessed.join(" ");
+  document.getElementById("remainingGuesses").innerHTML= guessesRemaining;
+
+
+console.log(blanksAndSuccesses);
+
+  console.log(keyWord);
+}
+
+// CHECK LETTERS FUNCTION
+// for loop to loop thru the array to compare keyword with user arrays; use if else statement to compare
+// if it is there, add letter to guessesandSuccesses array . if it doesn't exist (else statement) push the letter into the letters guessed array and subtract 1 from guesses remaining
+
+// ROUND COMPLETE
+// else if statement to see if the user won or loss 
+// start game function will be called from here
+
+
+
+
+
+//MAIN PROCESS
+startGame();
 document.onkeyup = function(event){
   userTextDiv.textContent = event.key;
   //console.log(event.key);
@@ -49,7 +89,7 @@ document.onkeyup = function(event){
     }else{"this letter is in position" + i};
   }
   event.key=" "
-  console.log(wordList);
+  console.log(lettersGuessed);
 
   
 
