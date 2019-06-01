@@ -30,29 +30,40 @@ var alpha = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q"
 
 // keyWord is the word the user is trying to guess. This word is randomly selected from the capitol array.
 var keyWord = capitol[Math.floor(Math.random() * capitol.length)];
+// var keyWord is currently a string; make it an array
 
 //NOB is the Number Of Blanks needed to represent the keyword
 var NOB = keyWord.length;
 
 var lettersGuessed = [];
 // The following stores the letter selected to a temporary variable
-var userText = document.getElementById('user-text');
+var userTextDiv = document.getElementById('user-text');
+console.log(userTextDiv);
 document.onkeyup = function(event){
-  userText.textContent = event.key;
+  userTextDiv.textContent = event.key;
   //Now we store the letter to the letterGuessed array. Pushes the variable event.key to the end of the letterGuessed array
-  if(userText)
+  if(userTextDiv)
   lettersGuessed.push(event.key);
-  console.log(event.key);
-  console.log(letterGuessed);
+  //change the mystery word from a string into an array
+   var W = keyWord.split("");
+  //look at each letter guessed and determine if it is in the W array
+   for (i=0;i<W.length;i++){
+    console.log(W[i], userTextDiv)
+  }
+
+  
+
+  console.log(W, keyWord);
+  //console.log(event.key);
+  console.log(lettersGuessed)
 };
 
 
-// TODO: Need a conditional if statement that looks at the letter guessed (var: letterGuessed) and determines if it is part part of the ///// word (var: [keyWord])
-//    1. Make sure the key pressed is a letter. Compare the letter pressed (var: letterGuessed) to the array of possible selections (var: [alpha] if result is a -1 tell user to select a letter)
+// TODO: Need a conditional if statement that looks at the letter guessed (var: letterGuessed) and determines if it is part part of the mystery word
+// TODO: Make sure the key pressed is a letter. Compare the letter pressed (var: letterGuessed) to the array of possible selections (var: [alpha] if result is a -1 tell user to select a letter)
 //console.log(letterGuessed);
-
-//    2. if letter was previously guessed then the user should be prompted to select something else
-//    3. If the letter part of the word's array:
+//TODO: if letter was previously guessed then the user should be prompted to select something else
+//TODO: If the letter part of the word's array:
 //      a. display the letter guessed on the screen in the proper position
 //      b. run the victory function
 //       If the letter is not part of the word's array:
@@ -65,7 +76,7 @@ document.onkeyup = function(event){
 
 
 
-console.log(lettersGuessed);
+console.log(keyWord);
 
 
 
