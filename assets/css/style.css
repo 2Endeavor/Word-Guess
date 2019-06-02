@@ -1,9 +1,34 @@
 
 .container {
-  width: 80vw;
+  width: 90vw;
   background-color:lightgoldenrodyellow;
   
   
+  
+}
+body{
+  background-repeat: no-repeat;
+}
+background{
+  width: 100vw
+}
+.header{
+  text-align: center;
+}
+.gameStats{
+  text-align: right;
+}
+#remainingGuesses{
+  text-align: right;
+}
+#dashes{
+  text-align: right;
+}
+#guesses{
+  text-align: right;
+}
+.letters{
+  text-align: right;
 }
 
 
