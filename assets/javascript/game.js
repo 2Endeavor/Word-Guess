@@ -21,7 +21,7 @@ var currentGuessDiv = document.getElementById('user-text');
 function startGame(parameter1) {
   console.log('the game is starting');
   // things i need to do to start a new game
-  guessesRemaining = 10;
+  guessesRemaining = 5;
   activeWordForGame = wordList[Math.floor(Math.random() * wordList.length)]; // select a word
   lettersThatHaveBeenGuessed = activeWordForGame.split(""); // split the word into letters and put it into an array
   activeWordLength = activeWordForGame.length;
@@ -53,14 +53,18 @@ function drawBoard() {
   // for loop to loop thru the array to compare keyword with user arrays; use if else statement to compare
   // if it is there, add letter to guessesandSuccesses array . if it doesn't exist (else statement) push the letter into the letters guessed array and subtract 1 from guesses remaining
 function checkLetter(letterGuessed) {
-  for (i = 0; i < activeWordLength; i++) { // look at ever letter in word
+  for (i = 0; i < activeWordLength; i++) { // look at every letter in word
+ 
     var currentLetter = activeWordForGame[i].toUpperCase(); // assign the current letter to a variable
     // is the current letter in the word equal to the letter i guessed
     if(currentLetter === letterGuessed.toUpperCase()){
+      console.log(guessesRemaining);
       blanksAndSuccesses[i] = currentLetter;
-    }
+      } 
+
   }
 }
+
 
 
 // *****Round complete function******
@@ -80,8 +84,11 @@ function processRound(letterGuessed) {
   }
   //change the mystery word from a string into an array
   lettersThatHaveBeenGuessed = activeWordForGame.split(""); //converts the 
-  //look at each letter guessed and determine if it is in the W array
+
+
 }
+
+
 
 document.onkeyup = function (event) {
   currentGuessDiv.textContent = event.key;
