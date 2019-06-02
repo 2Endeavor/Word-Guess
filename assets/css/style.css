@@ -1,19 +1,20 @@
 
 .container {
   width: 90vw;
-  background-color:lightgoldenrodyellow;
+  //background-color:lightgoldenrodyellow;
   
   
   
 }
 body{
   background-repeat: no-repeat;
+  background-size: 50%50%
 }
 background{
   width: 100vw
 }
 .header{
-  text-align: center;
+  text-align: right;
 }
 .gameStats{
   text-align: right;
