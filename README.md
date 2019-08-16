@@ -23,7 +23,7 @@ JS file:
 
 HTML file:
 1.	Fix bug: letter guessed is showing up in lower case on the left side of the screen.
-2.	photo on left needs to be longer
+
 3.	Doesn’t appear that bootstrap is working
 4.	Make the screen visually appealing to the user with all the information displaying
 
