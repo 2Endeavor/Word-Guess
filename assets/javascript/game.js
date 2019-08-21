@@ -8,7 +8,7 @@
 
 // GLOBAL VARIABLES
 var win = 0; // tracks wins
-var wordList = ["OLYMPIA", "NASHVILLE", "SACRAMENTO"]; //list of words computer selects from
+var wordList = ["DOVER", "HARRISBURG", "TRENTON", "ATLANTA", "HARTFORD", "BOSTON", "ANNAPOLIS", "COLUMBIA", "CONCORD", "RICHMOND", "ALBANY","RALEIGH", "PROVIDENCE", "MONPELIER", "FRANKFORD", "NASHVILLE", "COLUMBUS", "BATON ROUGE", "INDIANAPOLIS", "JACKSON", "SPRINGFIELD", "MONTGOMERY", "AUGUSTA", "JEFFERSON CITY", "LITTLE ROCK", "LANSING", "TALLAHASSEE", "AUSTIN", "DES MOINES", "MADISON", "SACRAMENTO", "ST. PAUL", "SALEM", "TOPEKA", "CHARLESTON", "CARSON CITY", "LINCOLN", "DENVER", "BIMARCK", "PEIRRE", "HELENA", "OLYMPIA", "BOSIE", "CHEYENNE", "SALT LAKE CITY", "OKLAHOMA CITY", "SANTA FE", "PHOENIX", "JUNEAU", "HONOLULU"]; //list of words computer selects from
 var activeWordForGame = ""; // this is the word that is randomly selected from the list
 var activeWordLength = 0; // This is the length of the random word
 var guessesRemaining = 10; // tracks the number of guesses remaining
@@ -21,14 +21,18 @@ var currentGuessDiv = document.getElementById('user-text');// The following stor
 
 
 
-// start game function runs and gets the game ready. Once this function runs nothing happens until the player pushes a button, activating function(event)
+// startGame function runs and gets the game ready. Once this function runs nothing happens until the player pushes a button, activating function(event)
 function startGame(parameter1) {
-  console.log('the game is starting line 15');
+  console.log("line 26 startgame ()")
+
   guessesRemaining = 10; // tracks the number of guesses remaining
  
   
   activeWordForGame = wordList[Math.floor(Math.random() * wordList.length)]; // select a word
   mysteryWord = activeWordForGame.split(""); // split the word into letters and put it into an array
+console.log("line 33 activeWordForGame " + activeWordForGame)
+
+  console.log("startgame() mystery word " + mysteryWord)
   
   activeWordLength = activeWordForGame.length;
   lettersGuessed = [];
@@ -36,23 +40,35 @@ function startGame(parameter1) {
 
   // draw the initial board (it's gonna be all dashes)
   for (i = 0; i < activeWordLength; i++) {
-    blanksAndSuccesses.push("_")
-  }
+    if(mysteryWord[i]===" "){
+      blanksAndSuccesses.push("...")
+    }
+    else{
+
+      blanksAndSuccesses.push("__")
+    }
+    }
+  
+  console.log("blanksAndSuccesses " + blanksAndSuccesses)
 
   // throw all the dashes into a string and then put a space between each dash
+  // document.getElementById("dashes").innerHTML = blanksAndSuccesses.join(" ");
   document.getElementById("dashes").innerHTML = blanksAndSuccesses.join(" ");
 
  
   // for every letter that has been guessed let's show that to the user with a space separating
+  console.log("line 48 lettersGuessed " +lettersGuessed)
   document.getElementById("guesses").innerHTML = lettersGuessed.join(" ");
   document.getElementById("remainingGuesses").innerHTML = guessesRemaining;
+  document.getElementById("wins").innerHTML = win;
   
 };// end startgame function
 
 
-
+// drawBoard function is called by processRound(). This updates the information on the screen
 function drawBoard() {
-  console.log("line 45 here i am at the drawBoard function")
+  console.log("line 56 drawing the board")
+
   document.getElementById("dashes").innerHTML = blanksAndSuccesses.join(" ");
   document.getElementById("guesses").innerHTML = lettersGuessed.join(" ");
   document.getElementById("remainingGuesses").innerHTML = guessesRemaining;
@@ -63,69 +79,88 @@ function drawBoard() {
 // *****check letters function******
 //Loop thru the activeWordForGame array and check to see if letter Guessed is a match for any element
 function checkLetter(letterGuessed) {
+  console.log("Line 68 checkLetter()")
  
-// look at every letter in the word
-  console.log("line 56 letterGuessed " + letterGuessed)
+// Look at every letter in the word. If the letter has a match to a letter in the word, place the letter at position [i] in the blanksAndSuccesses array. When done return to processRound()
+
   for (i = 0; i < activeWordLength; i++) { 
-    console.log("line 58 letterGuessed " + letterGuessed)
-    console.log("line 59activewordforgame " + activeWordForGame)
+
     var currentLetter = activeWordForGame[i].toUpperCase()
-    console.log("line 61 currentLetter " + currentLetter)
    
       if(currentLetter === letterGuessed.toUpperCase()){
         blanksAndSuccesses[i] = currentLetter
-
-        console.log("66 current letter line " + currentLetter)
-        console.log("67 letterGuessed  line " + letterGuessed)
-
     
     };
   }
-  console.log("line 72 done checking the letter")
+  
 
 };
 
-// function to look for edge cases
-// TODO: letter has already been guessed
-// TODO: character entered is not a letter
-function edgeCases(character){
-  let charCode = character.charCodeAt(0);
 
-  if ((charCode>64 && charCode<91) ||(charCode>96 && charCode<123)) {
-    console.log("this is a letter")
+
+
+
+// processRound function is called from the event listener. 
+function processRound(letterGuessed) {
+  console.log("line 91 processRound called")
+  let charCode = letterGuessed.charCodeAt(0);
+  console.log("line 97 charCode of letter guessed " + charCode)
+  document.getElementById('player-info').innerHTML =" ";
+//Check for edge cases:
+// check to make sure the key pressed is an alpha character. If not, direct player to make another selection
+  if((charCode<97 || charCode >122) 
+  ){
+  
+    console.log("line 102 not a valid entry")
+   
+    document.getElementById('player-info').innerHTML ="Not a Valid Entry";
+    return;
     
+
+  };
+  //Check to make sure the letter has not already been guessed
+  
+  console.log("line 123 lettersGuessed " + lettersGuessed)
+  console.log("line 124 letterGuessed " + letterGuessed)
+  if(lettersGuessed.indexOf(letterGuessed.toUppercase) !==-1 ){
+    console.log("line 126 lettersGuessed " + lettersGuessed)
+    console.log("line 127 letterGuessed " + letterGuessed)
+    console.log("this letter has been chosen before");
+
+
+
   }
   else{
-    console.log("this is not a letter")
-    document.getElementById('user-text').innerHTML ="Not a Valid Entry";
-   
-
-  }
-}
-
-
-
-
-// processRound function looks at the letter selected checks to see if the letter guessed is a match to a letter in the word
-function processRound(letterGuessed) {
-  edgeCases(letterGuessed);
-  console.log("line 83 Here I am")
-  checkLetter(letterGuessed); // find out if it's a 
-  console.log("line 85 letterGuessed " +letterGuessed)
-  drawBoard();
-  console.log("line 87 letterGuessed " +letterGuessed)
-  
-  //Now we store the letter to the letterGuessed array. Pushes the variable event.key to the end of the letterGuessed array
-  if (currentGuessDiv) {
-    //checkLetter(event.key);
+    console.log("line 110 entry is valid")
     lettersGuessed.push(event.key.toUpperCase());
+ 
+    // If the selection is valid proceed with evaluating the letter
+
+    //Call function checkLetter to see if the letter selected is in the word. 
+    checkLetter(letterGuessed); // find out if it's a match
+
+    // drawBoard();
+
+    
+    
+    //Now we store the letter to the letterGuessed array. Pushes the variable event.key to the end of the letterGuessed array
+    if (currentGuessDiv) {
+      console.log("line 120 currentGuessDiv not sure what this is doing")
+      //checkLetter(event.key);
+      // lettersGuessed.push(event.key.toUpperCase());
+      drawBoard();
+    }
+    //change the mystery word from a string into an array
+    mysteryWord = activeWordForGame.split(""); //converts the 
+    letterToEvaluate = event.key.toUpperCase();
+    gameStatus(letterToEvaluate, mysteryWord)
   }
-  //change the mystery word from a string into an array
-  mysteryWord = activeWordForGame.split(""); //converts the 
+  
+}
+  
+  
 
-};
-
-//gameStatus() function is involked from the event function. It takes in the letter guessed and the mystery word
+//gameStatus()  is involked from processRound function. It takes in the letter guessed and the mystery word
 function gameStatus(letter, word){
   // If letter guessed is wrong, decrement guessesRemaining and update board
   if((mysteryWord.indexOf(letterToEvaluate))===-1){
@@ -135,16 +170,19 @@ function gameStatus(letter, word){
 
   //If guessesRemaining = 0 notify the player of the correct word 
   if(guessesRemaining ===0){
-      document.getElementById('user-text').innerHTML ="The Capitol is: " + activeWordForGame;
-      console.log("line 122 gameover player ran out of guesses")
+      document.getElementById('player-info').innerHTML ="The Capitol is: " + activeWordForGame;
+      console.log("line 159 win " + win)
+      win === 0;
+ 
       startGame();
   }
 
   // Check to see if all letters have been guessed
-  if (blanksAndSuccesses.indexOf("_")===-1){
-      document.getElementById('user-text').innerHTML ="That's Correct. Well Done!"; 
+  if (blanksAndSuccesses.indexOf("__")===-1){
+      document.getElementById('player-info').innerHTML ="That's Correct. Well Done!"; 
       // TODO: increment the number of wins by +1
-      console.log("line 128 startgame function called on line 128")
+      win ++
+
       startGame();    
   };
 
@@ -155,19 +193,16 @@ function gameStatus(letter, word){
 
 // When a key is pressed, this function calls processRound and passes the key pressed
 document.onkeyup = function (event) {
+console.log("event listener started")
 
-  console.log("Line 102 Here I am")
   currentGuessDiv.textContent = event.key.toUpperCase();
-  processRound(event.key);
-  event.key = " "
-  letterToEvaluate = event.key.toUpperCase();
-  gameStatus(letterToEvaluate, mysteryWord)
-  console.log("letterToEvaluate " + letterToEvaluate)
-  console.log("line 106 event.key " + event.key)
 
-  console.log("mysteryWord " + mysteryWord);
-  console.log("letterGuessed " + lettersGuessed)
-  console.log(mysteryWord.indexOf(letterToEvaluate))
+  processRound(event.key);
+ 
+  event.key = " "
+  // letterToEvaluate = event.key.toUpperCase();
+  // gameStatus(letterToEvaluate, mysteryWord)
+
 
 };
 

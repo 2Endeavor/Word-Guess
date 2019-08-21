@@ -37,7 +37,7 @@ background{
 #guesses{
   text-align: center;
   color: blue;
-  font
+  font: 14px;
 }
 .letters{
   text-align: center;
@@ -46,6 +46,11 @@ background{
 
 
 #user-text{
+  text-align: center;
+  font-size: 20px;
+  color: blue;
+}
+#player-info{
   text-align: center;
   font-size: 20px;
   color: blue;
