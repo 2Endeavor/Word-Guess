@@ -119,15 +119,16 @@ function processRound(letterGuessed) {
 
   };
   //Check to make sure the letter has not already been guessed
-  
+  console.log("line 122 event.key " + event.key)
   console.log("line 123 lettersGuessed " + lettersGuessed)
   console.log("line 124 letterGuessed " + letterGuessed)
-  if(lettersGuessed.indexOf(letterGuessed.toUppercase) !==-1 ){
+  console.log("line 125 indexof " + (lettersGuessed.indexOf(event.key.toUpperCase())))
+  if(lettersGuessed.indexOf(event.key.toUpperCase()) !==-1 ){
     console.log("line 126 lettersGuessed " + lettersGuessed)
     console.log("line 127 letterGuessed " + letterGuessed)
     console.log("this letter has been chosen before");
 
-
+console.log("line 130 event.key " + event.key)
 
   }
   else{
@@ -196,6 +197,7 @@ document.onkeyup = function (event) {
 console.log("event listener started")
 
   currentGuessDiv.textContent = event.key.toUpperCase();
+  // currentGuessDiv.textContent = event.key;
 
   processRound(event.key);
  
