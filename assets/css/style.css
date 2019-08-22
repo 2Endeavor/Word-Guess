@@ -21,6 +21,8 @@ background{
   text-align: center;
   font-size: 30px;
   color: blue;
+   
+  
 }
 .gameStats{
   text-align: center;
@@ -32,7 +34,8 @@ background{
 }
 #dashes{
   text-align: center;
-  color: blue;
+  color: red;
+  font-weight: bolder;
 }
 #guesses{
   text-align: center;
@@ -48,7 +51,7 @@ background{
 #user-text{
   text-align: center;
   font-size: 20px;
-  color: blue;
+  color: red;
 }
 #player-info{
   text-align: center;
@@ -56,36 +59,17 @@ background{
   color: blue;
 }
 
+.wins{
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+}
 
-/* .header {
+#correct-answer{
   text-align: center;
-  height: 55px;
-  background-color: lavender;
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
 }
-.left-box{
-  width: 40vw;
-  background-color:blueviolet;
-  height: 40vh;
-  margin-top: 25px;
-}
-.right-box{
-  background-color: red;
-  height: 40vh;
-  margin-top:25px;
-}
-#directions{
-  padding-top:20px;
-  text-align:center;
-}
-#dashes span{
-  display:inline-block;
-  margin:5px;
-  font-size: 2em;
-}
-.stat{
-  text-align: right;
-  background-color: red;
-}
-#user-text{
-  margin-left: 15px;
-} */
+
+

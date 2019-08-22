@@ -8,7 +8,7 @@
 
 // GLOBAL VARIABLES
 var win = 0; // tracks wins
-var wordList = ["DOVER", "HARRISBURG", "TRENTON", "ATLANTA", "HARTFORD", "BOSTON", "ANNAPOLIS", "COLUMBIA", "CONCORD", "RICHMOND", "ALBANY","RALEIGH", "PROVIDENCE", "MONPELIER", "FRANKFORD", "NASHVILLE", "COLUMBUS", "BATON ROUGE", "INDIANAPOLIS", "JACKSON", "SPRINGFIELD", "MONTGOMERY", "AUGUSTA", "JEFFERSON CITY", "LITTLE ROCK", "LANSING", "TALLAHASSEE", "AUSTIN", "DES MOINES", "MADISON", "SACRAMENTO", "ST. PAUL", "SALEM", "TOPEKA", "CHARLESTON", "CARSON CITY", "LINCOLN", "DENVER", "BIMARCK", "PEIRRE", "HELENA", "OLYMPIA", "BOSIE", "CHEYENNE", "SALT LAKE CITY", "OKLAHOMA CITY", "SANTA FE", "PHOENIX", "JUNEAU", "HONOLULU"]; //list of words computer selects from
+var wordList = ["DOVER", "HARRISBURG", "TRENTON", "ATLANTA", "HARTFORD", "BOSTON", "ANNAPOLIS", "COLUMBIA", "CONCORD", "RICHMOND", "ALBANY","RALEIGH", "PROVIDENCE", "MONPELIER", "FRANKFORD", "NASHVILLE", "COLUMBUS", "BATON ROUGE", "INDIANAPOLIS", "JACKSON", "SPRINGFIELD", "MONTGOMERY", "AUGUSTA", "JEFFERSON CITY", "LITTLE ROCK", "LANSING", "TALLAHASSEE", "AUSTIN", "DES MOINES", "MADISON", "SACRAMENTO", "ST PAUL", "SALEM", "TOPEKA", "CHARLESTON", "CARSON CITY", "LINCOLN", "DENVER", "BISMARCK", "PEIRRE", "HELENA", "OLYMPIA", "BOSIE", "CHEYENNE", "SALT LAKE CITY", "OKLAHOMA CITY", "SANTA FE", "PHOENIX", "JUNEAU", "HONOLULU"]; //list of words computer selects from
 var activeWordForGame = ""; // this is the word that is randomly selected from the list
 var activeWordLength = 0; // This is the length of the random word
 var guessesRemaining = 10; // tracks the number of guesses remaining
@@ -60,7 +60,9 @@ console.log("line 33 activeWordForGame " + activeWordForGame)
   console.log("line 48 lettersGuessed " +lettersGuessed)
   document.getElementById("guesses").innerHTML = lettersGuessed.join(" ");
   document.getElementById("remainingGuesses").innerHTML = guessesRemaining;
+  
   document.getElementById("wins").innerHTML = win;
+
   
 };// end startgame function
 
@@ -180,8 +182,13 @@ function gameStatus(letter, word){
 
   // Check to see if all letters have been guessed
   if (blanksAndSuccesses.indexOf("__")===-1){
-      document.getElementById('player-info').innerHTML ="That's Correct. Well Done!"; 
-      // TODO: increment the number of wins by +1
+
+    // document.getElementById('correct-answer').innerHTML ="That's Correct. Well Done!"; 
+    console.log("line 185 word" + word)
+    document.getElementById('correct-answer').innerHTML = activeWordForGame;
+
+      document.getElementById('player-info').innerHTML ="That's Correct!"; 
+      // Increment the number of wins by +1
       win ++
 
       startGame();    
@@ -195,7 +202,8 @@ function gameStatus(letter, word){
 // When a key is pressed, this function calls processRound and passes the key pressed
 document.onkeyup = function (event) {
 console.log("event listener started")
-
+document.getElementById('correct-answer').innerHTML = "";
+document.getElementById('player-info').innerHTML =" "; 
   currentGuessDiv.textContent = event.key.toUpperCase();
   // currentGuessDiv.textContent = event.key;
 
