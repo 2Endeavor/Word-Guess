@@ -1,4 +1,4 @@
-// TODO: fix edge cases. Player should only be able to select alpha characters. Players shouldn't lose additional guesses when the enter the same wrong letter more than once 
+
 // TODO: add hints when a letter is guessed. Each state should include the general geographical location, The year it became a state, the states  top products, The states number it joined the union
 // TODO: encouraging words when they have three letters remaining "You're so close, you've almost got it!"
 // TODO: when the answer is revieled I want to show a picture of the state and capitol. Maybe a photo and maybe with the continental US and a pin to show where the state and capitol is on the map
