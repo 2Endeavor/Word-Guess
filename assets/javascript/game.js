@@ -84,7 +84,7 @@ function checkLetter(letterGuessed) {
   console.log("Line 68 checkLetter()")
  
 // Look at every letter in the word. If the letter has a match to a letter in the word, place the letter at position [i] in the blanksAndSuccesses array. When done return to processRound()
-
+debugger;
   for (i = 0; i < activeWordLength; i++) { 
 
     var currentLetter = activeWordForGame[i].toUpperCase()
@@ -121,16 +121,9 @@ function processRound(letterGuessed) {
 
   };
   //Check to make sure the letter has not already been guessed
-  console.log("line 122 event.key " + event.key)
-  console.log("line 123 lettersGuessed " + lettersGuessed)
-  console.log("line 124 letterGuessed " + letterGuessed)
-  console.log("line 125 indexof " + (lettersGuessed.indexOf(event.key.toUpperCase())))
-  if(lettersGuessed.indexOf(event.key.toUpperCase()) !==-1 ){
-    console.log("line 126 lettersGuessed " + lettersGuessed)
-    console.log("line 127 letterGuessed " + letterGuessed)
-    console.log("this letter has been chosen before");
 
-console.log("line 130 event.key " + event.key)
+  if(lettersGuessed.indexOf(event.key.toUpperCase()) !==-1 ){
+
 
   }
   else{
@@ -174,9 +167,7 @@ function gameStatus(letter, word){
   //If guessesRemaining = 0 notify the player of the correct word 
   if(guessesRemaining ===0){
       document.getElementById('player-info').innerHTML ="The Capitol is: " + activeWordForGame;
-      console.log("line 159 win " + win)
-      win === 0;
- 
+      win = 0;
       startGame();
   }
 
